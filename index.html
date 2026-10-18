@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kemal Sivro | Software Developer</title>
+<meta name="description" content="Kemal Sivro, software developer in Bosnia and Herzegovina. Full-stack (.NET, FastAPI, Django, Go, React) and AI/ML. CV and project portfolio.">
+<meta name="author" content="Kemal Sivro">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Kemal Sivro | Software Developer">
+<meta property="og:description" content="Full-stack and AI/ML developer. CV and projects: DSAI Vault, Prismo Cloud, ListForge, medical form OCR and more.">
+<meta property="og:url" content="https://vrosi21.pages.dev/">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://vrosi21.pages.dev/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<script>
+  try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <div class="who">
+      <h1>Kemal Sivro</h1>
+      <p class="tagline">Software developer. Full-stack and AI/ML. Zenica, Bosnia and Herzegovina (CET), open to remote.</p>
+      <ul class="links">
+        <li><a href="mailto:kemalsivro@gmail.com">kemalsivro@gmail.com</a></li>
+        <li><a href="https://github.com/vrosi21">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/kemal-sivro">LinkedIn</a></li>
+        <li><a href="kemal-sivro-cv.pdf" download>CV (PDF)</a></li>
+      </ul>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Switch light or dark theme" title="Switch theme">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.5 5.5 0 0 1-7.54-7.54A9.1 9.1 0 0 0 12 3Z"/></svg>
+    </button>
+  </div>
+  <nav class="wrap tabs" role="tablist" aria-label="Sections">
+    <a href="#projects" role="tab" id="tab-projects" aria-controls="panel-projects" class="tab">Projects</a>
+    <a href="#cv" role="tab" id="tab-cv" aria-controls="panel-cv" class="tab">CV</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<!-- ============ PROJECTS ============ -->
+<section id="panel-projects" class="panel" role="tabpanel" aria-labelledby="tab-projects">
+
+  <p class="intro">Things I have built and run, most of them end to end: from schema and API to deploy and the server they live on. Code is linked where the repository is public.</p>
+
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button type="button" class="chip is-on" data-filter="all">All</button>
+    <button type="button" class="chip" data-filter="fullstack">Full-stack</button>
+    <button type="button" class="chip" data-filter="ai">AI / ML</button>
+    <button type="button" class="chip" data-filter="infra">Infra and self-hosting</button>
+    <button type="button" class="chip" data-filter="algo">Algorithms and C++</button>
+  </div>
+
+  <h2 class="group-title">Featured</h2>
+  <div class="grid">
+
+    <article class="card" data-tags="fullstack infra ai">
+      <div class="card-top"><h3>DSAI Vault</h3><span class="year">2026</span></div>
+      <p class="kind">Full-stack study platform, built and run solo</p>
+      <p class="lede">Study site for the Data Science and AI programme at ETF Sarajevo. Course material becomes lecture notes, spaced-repetition flashcards, practice problems, past papers and exam plans, with LaTeX maths throughout. 39 courses, Google sign-in, and each student's progress saved to their account.</p>
+      <ul>
+        <li><strong>Content as code.</strong> Courses are Markdown/YAML files checked against Pydantic schemas, then rendered into the database. Errors name the exact file and line, and every formula is checked with KaTeX.</li>
+        <li><strong>Schema-driven editor.</strong> Web forms are generated from the same schemas the validator uses. YAML edits rewrite only the changed lines, so comments survive. Uploaded images are re-encoded to WebP with location metadata stripped.</li>
+        <li><strong>Git-like versioning.</strong> SHA-256 content-addressed storage, line-by-line diff history with one-click restore, and a command that replays web edits as git commits with author and date.</li>
+        <li><strong>Two ways to write.</strong> Student educators use either an AI-assisted toolkit (a public repo whose instructions guide an AI coding assistant) or the in-browser editor. Both go through the same validation.</li>
+        <li><strong>Operations.</strong> About 625 automated tests in GitHub Actions CI/CD, zero-downtime deploys to one Linux server, CSP, rate and size limits, role-based access, automated backups.</li>
+      </ul>
+      <p class="stack">Python 3.13 · Django 6 · Pydantic · SQLite · Alpine.js · KaTeX · Docker · Caddy · Cloudflare · GitHub Actions</p>
+      <p class="card-links"><a href="https://dsai3.pages.dev">Live site</a><a href="https://github.com/vrosi21/dsai-educator-kit">Educator kit (code)</a><span class="note">Main repo private</span></p>
+    </article>
+
+    <article class="card" data-tags="fullstack infra">
+      <div class="card-top"><h3>Prismo Cloud</h3><span class="year">2026</span></div>
+      <p class="kind">Self-hosted media cloud</p>
+      <p class="lede">My own Imgur/Giphy for screenshots, screen recordings, GIFs and stickers, running on my VPS behind Cloudflare. Captures upload from the desktop automatically, get processed into thumbnails, MP4 and GIF versions, and can be shared by private link or with specific Google accounts (view or edit).</p>
+      <ul>
+        <li><strong>Built to scale out.</strong> Stateless Go API. Clients get presigned URLs and upload straight to content-addressed S3 object storage (Garage).</li>
+        <li><strong>Job queue in Postgres.</strong> SKIP LOCKED plus LISTEN/NOTIFY feed ffmpeg workers, so there is no separate queue service to run.</li>
+        <li><strong>Desktop helper.</strong> A Windows app (Win32 + WebView2) opens a picker on a hotkey and pastes any sticker or GIF from the cloud into any chat app.</li>
+        <li><strong>Sticker maker in the browser.</strong> Background removal runs on the device with U²-Net on ONNX Runtime Web.</li>
+      </ul>
+      <p class="stack">Go · PostgreSQL · S3/Garage · ffmpeg · Docker · Caddy · Cloudflare Pages/Workers · React 19 · TypeScript · Vite · Tailwind · Google OIDC · ONNX Runtime Web</p>
+      <p class="card-links"><a href="https://github.com/vrosi21/prismo-cloud">Code</a></p>
+    </article>
+
+    <article class="card" data-tags="ai fullstack">
+      <div class="card-top"><h3>ListForge</h3><span class="year">2026</span></div>
+      <p class="kind">LLM pipeline with deterministic validation</p>
+      <p class="lede">Product copy generator for multi-brand e-commerce. A language model drafts each listing, and deterministic, tested code decides whether that draft is approved, sent to a human reviewer, or failed. Nothing publishes on the model's say-so.</p>
+      <ul>
+        <li>Every claim is checked against the product's own catalogue row: unsupported numbers, materials, colours and origins, plus brand-banned claims, each finding recorded with its field and character span.</li>
+        <li>Two retry loops kept apart. Transport backs off with full jitter and never retries a client error. Content re-asks the model with the exact validation errors.</li>
+        <li>Caches generations, not verdicts, so a stricter rule re-grades earlier output at zero model cost. Full provenance per item: prompt version, model, attempts, tokens, cost.</li>
+        <li>14 of 14 planted violations caught, 0 of 6 clean cases flagged, behind 281 backend and 139 frontend tests in CI.</li>
+      </ul>
+      <p class="stack">Python 3.13 · FastAPI · Pydantic v2 · Groq · SQLite · asyncio · Next.js 16 · React 19 · TypeScript · Tailwind · Docker · GitHub Actions</p>
+      <p class="card-links"><a href="https://github.com/vrosi21/list-forge">Code</a></p>
+    </article>
+
+    <article class="card" data-tags="ai">
+      <div class="card-top"><h3>Medical Form OCR Pipeline</h3><span class="year">2026</span></div>
+      <p class="kind">Computer vision</p>
+      <p class="lede">Turns scanned handwritten medical intake forms into validated patient records, 20 fields per form, and sends anything uncertain to a human-review queue.</p>
+      <ul>
+        <li>Four stages: fiducial-based affine registration, CLAHE preprocessing, per-field model routing (MNIST CNN, EasyOCR CRNN, pixel density), weighted fuzzy record linkage.</li>
+        <li>Field accuracy from <strong>20.8% to 98.0%</strong>, and the right patient on every held-out form.</li>
+        <li>Fine-tuned the EasyOCR CRNN recogniser with CTC loss. Tracked EasyOCR returning empty strings on single-character crops down to its detection stage and bypassed it.</li>
+      </ul>
+      <p class="stack">Python · PyTorch · EasyOCR · OpenCV · Streamlit</p>
+      <p class="card-links"><a href="https://github.com/vrosi21/form-ocr-pipeline">Code</a></p>
+    </article>
+
+    <article class="card" data-tags="ai infra">
+      <div class="card-top"><h3>BMO</h3><span class="year">2026</span></div>
+      <p class="kind">Self-hosted AI assistant</p>
+      <p class="lede">Personal assistant that manages my university inbox and schedule through a Telegram chat. It drafts replies, and nothing is sent without my explicit command.</p>
+      <ul>
+        <li>n8n workflows on an Ubuntu VPS with Docker. Caddy exposes only the webhook paths, and the admin UI is reachable only over an SSH tunnel.</li>
+        <li>Gmail messages are classified into an eleven-category taxonomy with schema-validated JSON, and deadlines from English and Bosnian mail go to Google Sheets and Calendar.</li>
+        <li>Eight-tool chat agent on Gemini with automatic fallback to two Groq models. Email is treated as untrusted input against prompt injection. Least-privilege OAuth scopes.</li>
+      </ul>
+      <p class="stack">n8n · Docker · Caddy · Ubuntu · Gemini API · Groq · Telegram Bot API · Gmail/Sheets/Calendar APIs · OAuth 2.0 · Python</p>
+      <p class="card-links"><span class="note">Private repo, walkthrough on request</span></p>
+    </article>
+
+    <article class="card" data-tags="ai fullstack">
+      <div class="card-top"><h3>Clarity</h3><span class="year">2026</span></div>
+      <p class="kind">Reinforcement learning + full-stack</p>
+      <p class="lede">Kanban board with a from-scratch RL agent that assigns tickets by workload, skill profile and past performance, instead of whoever grabs them first.</p>
+      <ul>
+        <li>NumPy Q-network written from scratch (12-64-32-1, Adam, experience replay, target network) with Boltzmann exploration.</li>
+        <li>Ticket lifecycle as a 6-state DFA with machine-checked safety invariants. Deadlock freedom verified by BFS over the LTS product state space.</li>
+        <li>Over 500 simulated sprints against a greedy baseline: makespan −9.5%, blocking rate −43%, load variance −63%.</li>
+      </ul>
+      <p class="stack">Python · NumPy · FastAPI · PostgreSQL · React 19 · TypeScript · sentence-transformers · LangChain</p>
+      <p class="card-links"><a href="https://github.com/vrosi21/Clarity">Code</a></p>
+    </article>
+
+  </div>
+
+  <h2 class="group-title">Also</h2>
+  <div class="list">
+
+    <article class="row" data-tags="ai">
+      <div><h3>Cartel Detection in Public Procurement</h3><p>Random Forest reaching 89.0% test ROC AUC on the GTI Labelled Cartel Dataset, validated at bidder level so the score reflects unseen firms. The network-analysis branch is reported as a negative result.</p><p class="stack">Python · scikit-learn · Pandas</p></div>
+      <p class="card-links"><a href="https://github.com/uoloki/Anomaly-Detection-in-Procurement">Code</a></p>
+    </article>
+
+    <article class="row" data-tags="ai">
+      <div><h3>Trend Breaks with Semantic Signals</h3><p>Short-term S&amp;P 500 movement prediction combining technical indicators with sentiment from financial posts, using sentence-transformer embeddings.</p><p class="stack">Python · PyTorch · sentence-transformers · scikit-learn</p></div>
+      <p class="card-links"><a href="https://github.com/uoloki/Detecting-Trend-Breaks-with-Semantic-Signals">Code</a></p>
+    </article>
+
+    <article class="row" data-tags="algo">
+      <div><h3>TV Image Denoising <span class="year">2025/26</span></h3><p>Cross-platform C++20 desktop app comparing gradient descent (Armijo backtracking) with a Newton-type lagged diffusivity solver on a total-variation denoising model. Convergence and lambda studies, released installers for Windows, macOS and Linux, written paper.</p><p class="stack">C++20 · CMake · natID</p></div>
+      <p class="card-links"><a href="https://github.com/vrosi21/TV-Image-Denoising">Code</a></p>
+    </article>
+
+    <article class="row" data-tags="algo">
+      <div><h3>Obiđi Jugu, TSP solver <span class="year">2025</span></h3><p>Team project (four people): interactive Travelling Salesman solver on a map of the former Yugoslavia. Nearest Neighbour with 2-opt, Simulated Annealing and a Genetic Algorithm, with step-back through every solver decision.</p><p class="stack">C++17 · CMake · natID</p></div>
+      <p class="card-links"><a href="https://github.com/vrosi21/TSP-Solver">Code</a></p>
+    </article>
+
+    <article class="row" data-tags="ai">
+      <div><h3>vehicle-data-lab</h3><p>Car price prediction from 3,045 OLX.ba listings: Selenium scraping, cleaning and merging 12 sources, EDA. RandomForestRegressor at about 9,985 BAM MAE.</p><p class="stack">Python · scikit-learn · Selenium</p></div>
+      <p class="card-links"><a href="https://github.com/vrosi21/vehicle-data-lab">Code</a></p>
+    </article>
+
+    <article class="row" data-tags="fullstack">
+      <div><h3>kadJeBus</h3><p>Public transit app for Zenica by the ZeForge community. I worked on ingestion: turning scanned PDF timetables into the structured JSON the app runs on.</p><p class="stack">TypeScript · Node.js · Express · Next.js</p></div>
+      <p class="card-links"><a href="https://kadjebus.zeforge.ba">Live</a><a href="https://github.com/zeforgezenica/busez">Code</a></p>
+    </article>
+
+    <article class="row" data-tags="algo">
+      <div><h3>Path Planning Visualiser</h3><p>Interactive simulator showing how six search algorithms, among them BFS, Dijkstra, A* and Weighted A*, explore grids and weighted terrain.</p><p class="stack">Python · Pygame · PyQt6</p></div>
+      <p class="card-links"><a href="https://github.com/vrosi21/Path-Planning-Visualiser">Code</a></p>
+    </article>
+
+    <article class="row" data-tags="fullstack">
+      <div><h3>smetovi.ba</h3><p>Open-source site for the Smetovi mountain community near Zenica. Frontend and content features.</p><p class="stack">Astro · Cloudflare Pages</p></div>
+      <p class="card-links"><a href="https://smetovi.ba">Live</a><a href="https://github.com/zeforgezenica/smetovi">Code</a></p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ CV ============ -->
+<section id="panel-cv" class="panel" role="tabpanel" aria-labelledby="tab-cv">
+
+  <div class="cv-actions"><a class="button" href="kemal-sivro-cv.pdf" download>Download CV (PDF)</a></div>
+
+  <div class="cv-block">
+    <h2>Summary</h2>
+    <p>Software developer and Data Science student at GRAFiT BA, where I re-architected a legacy Microsoft Dataverse estate into 8 independently deployable managed solutions and automated its release path with Azure DevOps CI/CD. Full-stack day to day: .NET/C#, FastAPI and PostgreSQL behind the API, React, React Native and Next.js in front of it, plus Dynamics 365 plugin development. Also a Teaching Assistant at ETF Sarajevo covering Python, C++ and Algorithms and Data Structures.</p>
+  </div>
+
+  <div class="cv-block">
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="job-head"><h3>Software Developer, GRAFiT BA d.o.o.</h3><span class="when">2025 to present</span></div>
+      <p class="where">Zenica, Bosnia and Herzegovina</p>
+      <ul>
+        <li>Led a ground-up re-architecture of a legacy Microsoft Dataverse and Power Platform estate, consolidating three overlapping unmanaged monolithic solutions into 8 independently deployable managed solutions, so every component has exactly one owner.</li>
+        <li>Designed and built a custom internal CLI toolchain covering the full solution lifecycle, from export and unpack through contract-based auditing to guarded dependency-ordered import, enforced by machine-checked publisher-prefix, dependency and environment-isolation rules.</li>
+        <li>Automated the release path as an Azure DevOps CI/CD pipeline running deployment, cleanup and audit scripts on every promotion across development, UAT and production.</li>
+        <li>Authored the architecture and decision records behind the packaging and ownership rules.</li>
+        <li>Developed Dynamics 365 plugins in .NET/C# (IPlugin) with idempotency, transactional correctness and structured error handling.</li>
+        <li>Built the FastAPI and PostgreSQL backend and the React Native operator app for a real-time field dispatch platform.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><h3>Teaching Assistant, Faculty of Electrical Engineering, University of Sarajevo</h3><span class="when">2025 to present</span></div>
+      <p class="where">Part-time</p>
+      <ul><li>Lab sessions and feedback for Python, C++ and Algorithms and Data Structures.</li></ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><h3>Freelance Full-Stack Developer</h3><span class="when">2024 to 2025</span></div>
+      <p class="where">Remote</p>
+      <ul><li>Custom web applications for clients with Next.js, Astro, React and WordPress, from requirements to handoff.</li></ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><h3>Full-Stack Development Intern, Inzpire d.o.o.</h3><span class="when">2024</span></div>
+      <p class="where">Zenica, Bosnia and Herzegovina</p>
+      <ul><li>REST endpoints and frontend components for a MEAN stack application (MongoDB, Express, Angular, Node.js) in a team.</li></ul>
+    </div>
+  </div>
+
+  <div class="cv-block">
+    <h2>Education</h2>
+    <div class="job">
+      <div class="job-head"><h3>BSc Data Science and Artificial Intelligence</h3><span class="when">2024 to present</span></div>
+      <p class="where">Faculty of Electrical Engineering, University of Sarajevo</p>
+    </div>
+    <div class="job">
+      <div class="job-head"><h3>Richmond Park International Secondary School, Zenica</h3><span class="when">2015 to 2019</span></div>
+      <p class="where">Honors student, gold medalist in IT competitions</p>
+    </div>
+  </div>
+
+  <div class="cv-block">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Languages</dt><dd>Python, TypeScript, JavaScript, C#, C++, Go</dd>
+      <dt>Backend</dt><dd>.NET, FastAPI, Django, Node.js, Express, REST APIs</dd>
+      <dt>Frontend</dt><dd>React, React Native, Next.js, Angular, Astro, Tailwind</dd>
+      <dt>AI / ML</dt><dd>PyTorch, scikit-learn, Pandas, NumPy, LangChain, sentence-transformers, EasyOCR, OpenCV, LLMs, RAG, NLP, reinforcement learning</dd>
+      <dt>Microsoft</dt><dd>Dynamics 365, Dataverse, Power Platform, Power Automate, PCF controls, Power Platform ALM</dd>
+      <dt>DevOps</dt><dd>Azure DevOps, GitHub Actions, CI/CD, Docker, Caddy, Cloudflare, Linux, Git</dd>
+      <dt>Data</dt><dd>PostgreSQL, SQLite, MongoDB, Dataverse, S3 object storage</dd>
+      <dt>Spoken</dt><dd>English (fluent), German (conversational), Bosnian/Croatian/Serbian (native)</dd>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap site-footer">
+  <p>Kemal Sivro · <a href="mailto:kemalsivro@gmail.com">kemalsivro@gmail.com</a> · <a href="https://github.com/vrosi21">github.com/vrosi21</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
